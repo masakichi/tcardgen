@@ -21,11 +21,10 @@ const (
 )
 
 type FrontMatter struct {
-	Title    string
-	Author   string
-	Category string
-	Tags     []string
-	Date     time.Time
+	Title  string
+	Author string
+	Tags   []string
+	Date   time.Time
 }
 
 // ParseFrontMatter parses the frontmatter of the specified Hugo content.
@@ -49,24 +48,12 @@ func parseFrontMatter(r io.Reader) (*FrontMatter, error) {
 	if fm.Title, err = getString(&cfm, fmTitle); err != nil {
 		return nil, err
 	}
-	if isArray := isArray(&cfm, fmAuthor); isArray {
-		if fm.Author, err = getFirstStringItem(&cfm, fmAuthor); err != nil {
-			return nil, err
-		}
-	} else {
-		if fm.Author, err = getString(&cfm, fmAuthor); err != nil {
-			return nil, err
-		}
-	}
-	if fm.Category, err = getFirstStringItem(&cfm, fmCategories); err != nil {
-		return nil, err
-	}
 	if fm.Tags, err = getAllStringItems(&cfm, fmTags); err != nil {
 		return nil, err
 	}
-	if fm.Date, err = getContentDate(&cfm); err != nil {
-		return nil, err
-	}
+	// if fm.Date, err = getContentDate(&cfm); err != nil {
+	// 	return nil, err
+	// }
 
 	return fm, nil
 }

@@ -188,7 +188,7 @@ func generateTCard(contentPath, outPath string, tpl image.Image, ffa *fontfamily
 		return err
 	}
 	if err := c.DrawTextAtPoint(
-		strings.ToUpper(fm.Category),
+		"Yuanji's Blog",
 		*cnf.Category.Start,
 		canvas.FgHexColor(cnf.Category.FgHexColor),
 		canvas.FontFaceFromFFA(ffa, cnf.Category.FontStyle, cnf.Category.FontSize),
@@ -196,7 +196,8 @@ func generateTCard(contentPath, outPath string, tpl image.Image, ffa *fontfamily
 		return err
 	}
 	if err := c.DrawTextAtPoint(
-		fmt.Sprintf("%s%s%s", fm.Author, cnf.Info.Separator, fm.Date.Format("Jan 2")),
+		//fmt.Sprintf("%s%s%s", "blog.gimo.me", "/", fm.Date.Format("2006/1/2")),
+		fmt.Sprintf("%s", "https://blog.gimo.me"),
 		*cnf.Info.Start,
 		canvas.FgHexColor(cnf.Info.FgHexColor),
 		canvas.FontFaceFromFFA(ffa, cnf.Info.FontStyle, cnf.Info.FontSize),
